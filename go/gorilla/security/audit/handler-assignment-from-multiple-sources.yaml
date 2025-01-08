@@ -1,7 +1,5 @@
 rules:
 - id: handler-assignment-from-multiple-sources
-  options:
-    taint_unified_mvars: true
   metadata:
     cwe:
     - 'CWE-289: Authentication Bypass by Alternate Name'
@@ -9,7 +7,6 @@ rules:
     technology:
     - gorilla
     confidence: MEDIUM
-    license: Commons Clause License Condition v1.0[LGPL-2.1-only]
     references:
     - https://cwe.mitre.org/data/definitions/289.html
     subcategory:

@@ -6,6 +6,8 @@ rules:
     types of vulnerabilities open-redirection and Cross-Site-Scripting
     (XSS) with JavaScript URIs. It is recommended to validate
     user-controllable input before allowing it to control the redirection.
+  options:
+    interfile: true
   metadata:
     interfile: true
     cwe:
@@ -23,7 +25,6 @@ rules:
     - https://cheatsheetseries.owasp.org/cheatsheets/Unvalidated_Redirects_and_Forwards_Cheat_Sheet.html
     technology:
     - browser
-    license: Commons Clause License Condition v1.0[LGPL-2.1-only]
     subcategory:
     - vuln
     likelihood: HIGH

@@ -15,6 +15,20 @@ rules:
             })
             ...
           }
+      - pattern-not-inside: |
+          resource $TYPE "..." {
+            ...
+            policy = jsonencode({
+              ...
+              Statement = [
+                ...,
+                {... Effect = "Deny" ...},
+                ...
+              ]
+              ...
+            })
+            ...
+          }
       - pattern: Action = $ACTION
       - metavariable-pattern:
           metavariable: $TYPE
@@ -32,6 +46,16 @@ rules:
           data aws_iam_policy_document "..." {
             ...
             statement {
+              ...
+            }
+            ...
+          }
+      - pattern-not-inside: |
+          data aws_iam_policy_document "..." {
+            ...
+            statement {
+              ...
+              effect = "Deny"
               ...
             }
             ...
@@ -77,7 +101,6 @@ rules:
     category: security
     cwe:
     - 'CWE-250: Execution with Unnecessary Privileges'
-    license: Commons Clause License Condition v1.0[LGPL-2.1-only]
     technology:
     - terraform
     - aws

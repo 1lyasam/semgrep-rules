@@ -16,6 +16,12 @@
     render file: "/some/path/#{page}"
   end
 
+  def test_render_with_modern_param
+    page = params[:page]
+    #ok: check-render-local-file-include
+    render file: File.basename("/some/path/#{page}")
+  end
+
   def test_render_with_modern_param_second_param
     page = params[:page]
     #ruleid: check-render-local-file-include
@@ -48,3 +54,8 @@
   end
     
 
+
+  def test_render_static_template_name
+    # ok: check-render-local-file-include
+    render :update, locals: { username: params[:username] }
+  end

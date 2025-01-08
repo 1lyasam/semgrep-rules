@@ -22,7 +22,6 @@ rules:
     - flask
     references:
     - https://flask.palletsprojects.com/en/2.0.x/security/#cross-site-scripting-xss
-    license: Commons Clause License Condition v1.0[LGPL-2.1-only]
     cwe2022-top25: true
     cwe2021-top25: true
     subcategory:
@@ -34,7 +33,11 @@ rules:
   pattern-sanitizers:
   - pattern: jinja2.escape(...)
   - pattern: flask.escape(...)
-  - pattern: flask.render_template("~=/.*\.html", ...)
+  - patterns:
+    - pattern: flask.render_template($TPL, ...)
+    - metavariable-regex:
+        metavariable: $TPL
+        regex: .*\.html
   pattern-sources:
   - patterns:
     - pattern-either:

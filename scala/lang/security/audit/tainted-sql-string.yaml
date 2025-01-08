@@ -21,7 +21,6 @@ rules:
     technology:
     - scala
     confidence: MEDIUM
-    license: Commons Clause License Condition v1.0[LGPL-2.1-only]
     cwe2022-top25: true
     cwe2021-top25: true
     subcategory:
@@ -73,10 +72,13 @@ rules:
         - pattern-regex: |
             .*\b(?i)(select|delete|insert|create|update|alter|drop)\b.*
     - pattern-not-inside: println(...)
+    - pattern-not-inside: throw new $EXCEPTION(...)
   pattern-sanitizers:
   - pattern-either:
     - patterns:
-      - pattern: $LOGGER.$METHOD(...)
+      - pattern-either:
+        - pattern: $LOGGER.$METHOD(...)
+        - pattern: $LOGGER(...)
       - metavariable-regex:
           metavariable: $LOGGER
           regex: (i?)log.*

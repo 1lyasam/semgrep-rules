@@ -9,6 +9,8 @@ rules:
       path or query parameter. When user-input is necessary to craft the
       request, it is recommended to follow OWASP best practices to prevent
       abuse, including using an allowlist.
+    options:
+      interfile: true
     metadata:
       cwe:
         - "CWE-918: Server-Side Request Forgery (SSRF)"
@@ -19,7 +21,6 @@ rules:
       category: security
       technology:
         - go
-      license: Commons Clause License Condition v1.0[LGPL-2.1-only]
       confidence: HIGH
       cwe2022-top25: true
       cwe2021-top25: true
@@ -69,7 +70,6 @@ rules:
                   - metavariable-regex:
                       metavariable: $METHOD
                       regex: ^(Get|Head|Post|PostForm)$
-              - pattern: http.Redirect($W, $REQ, $URL, ...)
               - patterns:
                   - pattern: |
                       http.NewRequest("$METHOD", $URL, ...)

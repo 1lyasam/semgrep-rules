@@ -5,6 +5,8 @@ rules:
       could lead to SQL injection if the variable is user-controlled and is not
       properly sanitized. In order to prevent SQL injection, it is recommended
       to use parameterized queries or prepared statements.
+    options:
+      interfile: true
     metadata:
       interfile: true
       references:
@@ -25,7 +27,6 @@ rules:
       likelihood: HIGH
       impact: HIGH
       confidence: HIGH
-      license: Commons Clause License Condition v1.0[LGPL-2.1-only]
     languages:
       - javascript
       - typescript
